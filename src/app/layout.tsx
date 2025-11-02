@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BM IT Solution",
-  description: "BM IT Solution Office Application",
+  title: "SKYLOGIC IT Solution",
+  description: "SKYLOGIC IT Solution Office Application",
 };
 export default function RootLayout({
   children,

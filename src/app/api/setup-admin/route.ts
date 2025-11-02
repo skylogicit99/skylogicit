@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     if (!name || !userName || !password) {
       return NextResponse.json(
         { error: "All fields are required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     if (existing) {
       return NextResponse.json(
         { error: "Username already exists." },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -34,13 +34,13 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: "Admin user created successfully", admin },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("[SETUP_ADMIN_ERROR]", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
