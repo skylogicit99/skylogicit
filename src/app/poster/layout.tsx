@@ -14,7 +14,7 @@ export default async function PosterLayout({
 }) {
   const session = await getServerSession(authOptions);
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-gray-100 to-gray-300 p-4">
+    <div className="flex min-h-screen flex-col bg-linear-to-br from-gray-100 to-gray-300 p-4">
       <header className="mb-6 flex items-center justify-between">
         <Link href="/poster">
           <h1 className="text-2xl font-bold text-gray-800">

@@ -21,6 +21,7 @@ const navLinks = [
   { name: "Leads", href: "/admin/leads/inbox" },
   { name: "Announcement", href: "/admin/announcement" },
   { name: "Export Leads", href: "/admin/export" },
+  { name: "Change Password", href: "/admin/profile/change-password" },
 ];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -31,13 +32,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       {/* Sidebar */}
       <aside className="hidden min-h-screen w-64 flex-col justify-between space-y-4 bg-white p-4 shadow-md md:flex">
         <div>
-          <h1 className="mb-6 text-center text-2xl font-bold">Admin Panel</h1>
-          <nav className="flex flex-col items-center justify-center space-y-2">
+          <h1 className="mb-6 text-2xl font-bold">Admin Panel</h1>
+          <nav className="flex flex-col items-center justify-center">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-md font-semibold"
+                className="text-md block w-full rounded-lg px-6 py-2 font-semibold text-gray-900 transition hover:bg-gray-200"
               >
                 {link.name}
               </Link>
@@ -47,7 +48,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto px-6 py-3">
+      <main className="flex-1 overflow-y-auto px-2 py-3 md:px-6">
         <div className="mb-2 flex items-center justify-end space-x-2">
           <Link href="/admin/users/create">
             <button className="button-85" role="button">
