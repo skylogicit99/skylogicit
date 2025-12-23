@@ -2690,8 +2690,18 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserAvgAggregateOutputType = {
+    sessionVersion: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    sessionVersion: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -2699,6 +2709,7 @@ export namespace Prisma {
     name: string | null
     userName: string | null
     password: string | null
+    sessionVersion: number | null
     isActive: boolean | null
     type: $Enums.UserType | null
     createdAt: Date | null
@@ -2709,6 +2720,7 @@ export namespace Prisma {
     name: string | null
     userName: string | null
     password: string | null
+    sessionVersion: number | null
     isActive: boolean | null
     type: $Enums.UserType | null
     createdAt: Date | null
@@ -2719,6 +2731,7 @@ export namespace Prisma {
     name: number
     userName: number
     password: number
+    sessionVersion: number
     isActive: number
     type: number
     createdAt: number
@@ -2726,11 +2739,20 @@ export namespace Prisma {
   }
 
 
+  export type UserAvgAggregateInputType = {
+    sessionVersion?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    sessionVersion?: true
+  }
+
   export type UserMinAggregateInputType = {
     id?: true
     name?: true
     userName?: true
     password?: true
+    sessionVersion?: true
     isActive?: true
     type?: true
     createdAt?: true
@@ -2741,6 +2763,7 @@ export namespace Prisma {
     name?: true
     userName?: true
     password?: true
+    sessionVersion?: true
     isActive?: true
     type?: true
     createdAt?: true
@@ -2751,6 +2774,7 @@ export namespace Prisma {
     name?: true
     userName?: true
     password?: true
+    sessionVersion?: true
     isActive?: true
     type?: true
     createdAt?: true
@@ -2795,6 +2819,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -2825,6 +2861,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
@@ -2834,10 +2872,13 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion: number
     isActive: boolean
     type: $Enums.UserType
     createdAt: Date
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -2861,6 +2902,7 @@ export namespace Prisma {
     name?: boolean
     userName?: boolean
     password?: boolean
+    sessionVersion?: boolean
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
@@ -2879,6 +2921,7 @@ export namespace Prisma {
     name?: boolean
     userName?: boolean
     password?: boolean
+    sessionVersion?: boolean
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
@@ -2889,6 +2932,7 @@ export namespace Prisma {
     name?: boolean
     userName?: boolean
     password?: boolean
+    sessionVersion?: boolean
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
@@ -2899,12 +2943,13 @@ export namespace Prisma {
     name?: boolean
     userName?: boolean
     password?: boolean
+    sessionVersion?: boolean
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userName" | "password" | "isActive" | "type" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userName" | "password" | "sessionVersion" | "isActive" | "type" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | User$postsArgs<ExtArgs>
     claims?: boolean | User$claimsArgs<ExtArgs>
@@ -2934,6 +2979,7 @@ export namespace Prisma {
       name: string
       userName: string
       password: string
+      sessionVersion: number
       isActive: boolean
       type: $Enums.UserType
       createdAt: Date
@@ -3371,6 +3417,7 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly userName: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly sessionVersion: FieldRef<"User", 'Int'>
     readonly isActive: FieldRef<"User", 'Boolean'>
     readonly type: FieldRef<"User", 'UserType'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
@@ -10562,6 +10609,7 @@ export namespace Prisma {
     name: 'name',
     userName: 'userName',
     password: 'password',
+    sessionVersion: 'sessionVersion',
     isActive: 'isActive',
     type: 'type',
     createdAt: 'createdAt'
@@ -10720,6 +10768,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -10737,20 +10799,6 @@ export namespace Prisma {
    * Reference to a field of type 'UserType[]'
    */
   export type ListEnumUserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserType[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -10866,6 +10914,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     userName?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    sessionVersion?: IntFilter<"User"> | number
     isActive?: BoolFilter<"User"> | boolean
     type?: EnumUserTypeFilter<"User"> | $Enums.UserType
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -10883,6 +10932,7 @@ export namespace Prisma {
     name?: SortOrder
     userName?: SortOrder
     password?: SortOrder
+    sessionVersion?: SortOrder
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
@@ -10903,6 +10953,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    sessionVersion?: IntFilter<"User"> | number
     isActive?: BoolFilter<"User"> | boolean
     type?: EnumUserTypeFilter<"User"> | $Enums.UserType
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -10920,12 +10971,15 @@ export namespace Prisma {
     name?: SortOrder
     userName?: SortOrder
     password?: SortOrder
+    sessionVersion?: SortOrder
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -10936,6 +10990,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"User"> | string
     userName?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    sessionVersion?: IntWithAggregatesFilter<"User"> | number
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     type?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -11376,6 +11431,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -11393,6 +11449,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -11410,6 +11467,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11427,6 +11485,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11444,6 +11503,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -11454,6 +11514,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11464,6 +11525,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11949,6 +12011,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -12031,9 +12104,14 @@ export namespace Prisma {
     name?: SortOrder
     userName?: SortOrder
     password?: SortOrder
+    sessionVersion?: SortOrder
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    sessionVersion?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -12041,6 +12119,7 @@ export namespace Prisma {
     name?: SortOrder
     userName?: SortOrder
     password?: SortOrder
+    sessionVersion?: SortOrder
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
@@ -12051,9 +12130,30 @@ export namespace Prisma {
     name?: SortOrder
     userName?: SortOrder
     password?: SortOrder
+    sessionVersion?: SortOrder
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    sessionVersion?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -12177,17 +12277,6 @@ export namespace Prisma {
     postId?: SortOrder
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -12241,22 +12330,6 @@ export namespace Prisma {
     dailyLimit?: SortOrder
     cooldownSecs?: SortOrder
     usageCount?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12559,6 +12632,14 @@ export namespace Prisma {
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
     createMany?: NotificationCreateManyUserInputEnvelope
     connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -12907,14 +12988,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
@@ -13048,6 +13121,33 @@ export namespace Prisma {
     not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -13075,33 +13175,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13222,6 +13295,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -13238,6 +13312,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -13270,6 +13345,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13286,6 +13362,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13678,6 +13755,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -13694,6 +13772,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -13767,6 +13846,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13783,6 +13863,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13877,6 +13958,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -13893,6 +13975,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -13970,6 +14053,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13986,6 +14070,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14002,6 +14087,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14018,6 +14104,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14089,6 +14176,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14105,6 +14193,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14166,6 +14255,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14182,6 +14272,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14214,6 +14305,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14230,6 +14322,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14246,6 +14339,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14262,6 +14356,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14294,6 +14389,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14310,6 +14406,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14326,6 +14423,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14342,6 +14440,7 @@ export namespace Prisma {
     name: string
     userName: string
     password: string
+    sessionVersion?: number
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
@@ -14374,6 +14473,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14390,6 +14490,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     userName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
