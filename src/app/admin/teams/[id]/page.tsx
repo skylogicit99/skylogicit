@@ -205,13 +205,6 @@ export default function TeamDetailPage() {
                     <TableCell>{m.userName}</TableCell>
                     <TableCell>
                       {team.leaderId !== m.id && (
-                        // <Button
-                        //   className="cursor-pointer"
-                        //   variant="destructive"
-                        //   onClick={}
-                        // >
-                        //   Remove
-                        // </Button>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
                             <Button
