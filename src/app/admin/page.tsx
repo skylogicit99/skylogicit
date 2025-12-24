@@ -2,7 +2,9 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth"; // adjust path if needed
 import { redirect } from "next/navigation";
-import AdminSummary from "@/components/admin/adminSummary";
+// import AdminSummary from "@/components/admin/adminSummary";
+import AnalyticWrapper from "@/components/admin/AdminAnalyticsWrapper";
+import AnalyticsInside from "@/components/admin/AdminAnalyticsInside";
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions);
@@ -10,5 +12,9 @@ export default async function AdminPage() {
     redirect("/login");
   }
 
-  return <AdminSummary />
+  return (
+    <AnalyticWrapper>
+      <AnalyticsInside />
+    </AnalyticWrapper>
+  );
 }
