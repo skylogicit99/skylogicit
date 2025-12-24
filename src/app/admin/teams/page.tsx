@@ -114,7 +114,7 @@ export default function TeamAdminDashboard() {
                 <TableHead>Name</TableHead>
                 <TableHead>Leader</TableHead>
                 <TableHead>Members</TableHead>
-                <TableHead>Members</TableHead>
+                <TableHead>Created At</TableHead>
                 <TableHead>More Info</TableHead>
               </TableRow>
             </TableHeader>
