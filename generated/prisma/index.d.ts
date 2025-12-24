@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type SellerQueue = $Result.DefaultSelection<Prisma.$SellerQueuePayload>
 /**
+ * Model PosterTeam
+ * 
+ */
+export type PosterTeam = $Result.DefaultSelection<Prisma.$PosterTeamPayload>
+/**
  * Model User
  * 
  */
@@ -229,6 +234,16 @@ export class PrismaClient<
     * ```
     */
   get sellerQueue(): Prisma.SellerQueueDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.posterTeam`: Exposes CRUD operations for the **PosterTeam** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PosterTeams
+    * const posterTeams = await prisma.posterTeam.findMany()
+    * ```
+    */
+  get posterTeam(): Prisma.PosterTeamDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -741,6 +756,7 @@ export namespace Prisma {
 
   export const ModelName: {
     SellerQueue: 'SellerQueue',
+    PosterTeam: 'PosterTeam',
     User: 'User',
     Post: 'Post',
     Claim: 'Claim',
@@ -766,7 +782,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "sellerQueue" | "user" | "post" | "claim" | "postDeletion" | "sellerLimit" | "sellerRequestLog" | "notification"
+      modelProps: "sellerQueue" | "posterTeam" | "user" | "post" | "claim" | "postDeletion" | "sellerLimit" | "sellerRequestLog" | "notification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -841,6 +857,80 @@ export namespace Prisma {
           count: {
             args: Prisma.SellerQueueCountArgs<ExtArgs>
             result: $Utils.Optional<SellerQueueCountAggregateOutputType> | number
+          }
+        }
+      }
+      PosterTeam: {
+        payload: Prisma.$PosterTeamPayload<ExtArgs>
+        fields: Prisma.PosterTeamFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PosterTeamFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PosterTeamFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>
+          }
+          findFirst: {
+            args: Prisma.PosterTeamFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PosterTeamFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>
+          }
+          findMany: {
+            args: Prisma.PosterTeamFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>[]
+          }
+          create: {
+            args: Prisma.PosterTeamCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>
+          }
+          createMany: {
+            args: Prisma.PosterTeamCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PosterTeamCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>[]
+          }
+          delete: {
+            args: Prisma.PosterTeamDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>
+          }
+          update: {
+            args: Prisma.PosterTeamUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>
+          }
+          deleteMany: {
+            args: Prisma.PosterTeamDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PosterTeamUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PosterTeamUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>[]
+          }
+          upsert: {
+            args: Prisma.PosterTeamUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PosterTeamPayload>
+          }
+          aggregate: {
+            args: Prisma.PosterTeamAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePosterTeam>
+          }
+          groupBy: {
+            args: Prisma.PosterTeamGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PosterTeamGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PosterTeamCountArgs<ExtArgs>
+            result: $Utils.Optional<PosterTeamCountAggregateOutputType> | number
           }
         }
       }
@@ -1459,6 +1549,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     sellerQueue?: SellerQueueOmit
+    posterTeam?: PosterTeamOmit
     user?: UserOmit
     post?: PostOmit
     claim?: ClaimOmit
@@ -1542,10 +1633,42 @@ export namespace Prisma {
 
 
   /**
+   * Count Type PosterTeamCountOutputType
+   */
+
+  export type PosterTeamCountOutputType = {
+    members: number
+  }
+
+  export type PosterTeamCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    members?: boolean | PosterTeamCountOutputTypeCountMembersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PosterTeamCountOutputType without action
+   */
+  export type PosterTeamCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeamCountOutputType
+     */
+    select?: PosterTeamCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PosterTeamCountOutputType without action
+   */
+  export type PosterTeamCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
+
+  /**
    * Count Type UserCountOutputType
    */
 
   export type UserCountOutputType = {
+    leadingTeams: number
     posts: number
     claims: number
     requestLogs: number
@@ -1555,6 +1678,7 @@ export namespace Prisma {
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    leadingTeams?: boolean | UserCountOutputTypeCountLeadingTeamsArgs
     posts?: boolean | UserCountOutputTypeCountPostsArgs
     claims?: boolean | UserCountOutputTypeCountClaimsArgs
     requestLogs?: boolean | UserCountOutputTypeCountRequestLogsArgs
@@ -1572,6 +1696,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLeadingTeamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PosterTeamWhereInput
   }
 
   /**
@@ -2685,6 +2816,1094 @@ export namespace Prisma {
 
 
   /**
+   * Model PosterTeam
+   */
+
+  export type AggregatePosterTeam = {
+    _count: PosterTeamCountAggregateOutputType | null
+    _min: PosterTeamMinAggregateOutputType | null
+    _max: PosterTeamMaxAggregateOutputType | null
+  }
+
+  export type PosterTeamMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    leaderId: string | null
+  }
+
+  export type PosterTeamMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    leaderId: string | null
+  }
+
+  export type PosterTeamCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    leaderId: number
+    _all: number
+  }
+
+
+  export type PosterTeamMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    leaderId?: true
+  }
+
+  export type PosterTeamMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    leaderId?: true
+  }
+
+  export type PosterTeamCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    leaderId?: true
+    _all?: true
+  }
+
+  export type PosterTeamAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PosterTeam to aggregate.
+     */
+    where?: PosterTeamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PosterTeams to fetch.
+     */
+    orderBy?: PosterTeamOrderByWithRelationInput | PosterTeamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PosterTeamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PosterTeams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PosterTeams.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PosterTeams
+    **/
+    _count?: true | PosterTeamCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PosterTeamMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PosterTeamMaxAggregateInputType
+  }
+
+  export type GetPosterTeamAggregateType<T extends PosterTeamAggregateArgs> = {
+        [P in keyof T & keyof AggregatePosterTeam]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePosterTeam[P]>
+      : GetScalarType<T[P], AggregatePosterTeam[P]>
+  }
+
+
+
+
+  export type PosterTeamGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PosterTeamWhereInput
+    orderBy?: PosterTeamOrderByWithAggregationInput | PosterTeamOrderByWithAggregationInput[]
+    by: PosterTeamScalarFieldEnum[] | PosterTeamScalarFieldEnum
+    having?: PosterTeamScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PosterTeamCountAggregateInputType | true
+    _min?: PosterTeamMinAggregateInputType
+    _max?: PosterTeamMaxAggregateInputType
+  }
+
+  export type PosterTeamGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    leaderId: string
+    _count: PosterTeamCountAggregateOutputType | null
+    _min: PosterTeamMinAggregateOutputType | null
+    _max: PosterTeamMaxAggregateOutputType | null
+  }
+
+  type GetPosterTeamGroupByPayload<T extends PosterTeamGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PosterTeamGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PosterTeamGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PosterTeamGroupByOutputType[P]>
+            : GetScalarType<T[P], PosterTeamGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PosterTeamSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    leaderId?: boolean
+    leader?: boolean | UserDefaultArgs<ExtArgs>
+    members?: boolean | PosterTeam$membersArgs<ExtArgs>
+    _count?: boolean | PosterTeamCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["posterTeam"]>
+
+  export type PosterTeamSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    leaderId?: boolean
+    leader?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["posterTeam"]>
+
+  export type PosterTeamSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    leaderId?: boolean
+    leader?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["posterTeam"]>
+
+  export type PosterTeamSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    leaderId?: boolean
+  }
+
+  export type PosterTeamOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "leaderId", ExtArgs["result"]["posterTeam"]>
+  export type PosterTeamInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    leader?: boolean | UserDefaultArgs<ExtArgs>
+    members?: boolean | PosterTeam$membersArgs<ExtArgs>
+    _count?: boolean | PosterTeamCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PosterTeamIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    leader?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PosterTeamIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    leader?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $PosterTeamPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PosterTeam"
+    objects: {
+      leader: Prisma.$UserPayload<ExtArgs>
+      members: Prisma.$UserPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+      leaderId: string
+    }, ExtArgs["result"]["posterTeam"]>
+    composites: {}
+  }
+
+  type PosterTeamGetPayload<S extends boolean | null | undefined | PosterTeamDefaultArgs> = $Result.GetResult<Prisma.$PosterTeamPayload, S>
+
+  type PosterTeamCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PosterTeamFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PosterTeamCountAggregateInputType | true
+    }
+
+  export interface PosterTeamDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PosterTeam'], meta: { name: 'PosterTeam' } }
+    /**
+     * Find zero or one PosterTeam that matches the filter.
+     * @param {PosterTeamFindUniqueArgs} args - Arguments to find a PosterTeam
+     * @example
+     * // Get one PosterTeam
+     * const posterTeam = await prisma.posterTeam.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PosterTeamFindUniqueArgs>(args: SelectSubset<T, PosterTeamFindUniqueArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PosterTeam that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PosterTeamFindUniqueOrThrowArgs} args - Arguments to find a PosterTeam
+     * @example
+     * // Get one PosterTeam
+     * const posterTeam = await prisma.posterTeam.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PosterTeamFindUniqueOrThrowArgs>(args: SelectSubset<T, PosterTeamFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PosterTeam that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PosterTeamFindFirstArgs} args - Arguments to find a PosterTeam
+     * @example
+     * // Get one PosterTeam
+     * const posterTeam = await prisma.posterTeam.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PosterTeamFindFirstArgs>(args?: SelectSubset<T, PosterTeamFindFirstArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PosterTeam that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PosterTeamFindFirstOrThrowArgs} args - Arguments to find a PosterTeam
+     * @example
+     * // Get one PosterTeam
+     * const posterTeam = await prisma.posterTeam.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PosterTeamFindFirstOrThrowArgs>(args?: SelectSubset<T, PosterTeamFindFirstOrThrowArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PosterTeams that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PosterTeamFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PosterTeams
+     * const posterTeams = await prisma.posterTeam.findMany()
+     * 
+     * // Get first 10 PosterTeams
+     * const posterTeams = await prisma.posterTeam.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const posterTeamWithIdOnly = await prisma.posterTeam.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PosterTeamFindManyArgs>(args?: SelectSubset<T, PosterTeamFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PosterTeam.
+     * @param {PosterTeamCreateArgs} args - Arguments to create a PosterTeam.
+     * @example
+     * // Create one PosterTeam
+     * const PosterTeam = await prisma.posterTeam.create({
+     *   data: {
+     *     // ... data to create a PosterTeam
+     *   }
+     * })
+     * 
+     */
+    create<T extends PosterTeamCreateArgs>(args: SelectSubset<T, PosterTeamCreateArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PosterTeams.
+     * @param {PosterTeamCreateManyArgs} args - Arguments to create many PosterTeams.
+     * @example
+     * // Create many PosterTeams
+     * const posterTeam = await prisma.posterTeam.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PosterTeamCreateManyArgs>(args?: SelectSubset<T, PosterTeamCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PosterTeams and returns the data saved in the database.
+     * @param {PosterTeamCreateManyAndReturnArgs} args - Arguments to create many PosterTeams.
+     * @example
+     * // Create many PosterTeams
+     * const posterTeam = await prisma.posterTeam.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PosterTeams and only return the `id`
+     * const posterTeamWithIdOnly = await prisma.posterTeam.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PosterTeamCreateManyAndReturnArgs>(args?: SelectSubset<T, PosterTeamCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PosterTeam.
+     * @param {PosterTeamDeleteArgs} args - Arguments to delete one PosterTeam.
+     * @example
+     * // Delete one PosterTeam
+     * const PosterTeam = await prisma.posterTeam.delete({
+     *   where: {
+     *     // ... filter to delete one PosterTeam
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PosterTeamDeleteArgs>(args: SelectSubset<T, PosterTeamDeleteArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PosterTeam.
+     * @param {PosterTeamUpdateArgs} args - Arguments to update one PosterTeam.
+     * @example
+     * // Update one PosterTeam
+     * const posterTeam = await prisma.posterTeam.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PosterTeamUpdateArgs>(args: SelectSubset<T, PosterTeamUpdateArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PosterTeams.
+     * @param {PosterTeamDeleteManyArgs} args - Arguments to filter PosterTeams to delete.
+     * @example
+     * // Delete a few PosterTeams
+     * const { count } = await prisma.posterTeam.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PosterTeamDeleteManyArgs>(args?: SelectSubset<T, PosterTeamDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PosterTeams.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PosterTeamUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PosterTeams
+     * const posterTeam = await prisma.posterTeam.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PosterTeamUpdateManyArgs>(args: SelectSubset<T, PosterTeamUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PosterTeams and returns the data updated in the database.
+     * @param {PosterTeamUpdateManyAndReturnArgs} args - Arguments to update many PosterTeams.
+     * @example
+     * // Update many PosterTeams
+     * const posterTeam = await prisma.posterTeam.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PosterTeams and only return the `id`
+     * const posterTeamWithIdOnly = await prisma.posterTeam.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PosterTeamUpdateManyAndReturnArgs>(args: SelectSubset<T, PosterTeamUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PosterTeam.
+     * @param {PosterTeamUpsertArgs} args - Arguments to update or create a PosterTeam.
+     * @example
+     * // Update or create a PosterTeam
+     * const posterTeam = await prisma.posterTeam.upsert({
+     *   create: {
+     *     // ... data to create a PosterTeam
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PosterTeam we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PosterTeamUpsertArgs>(args: SelectSubset<T, PosterTeamUpsertArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PosterTeams.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PosterTeamCountArgs} args - Arguments to filter PosterTeams to count.
+     * @example
+     * // Count the number of PosterTeams
+     * const count = await prisma.posterTeam.count({
+     *   where: {
+     *     // ... the filter for the PosterTeams we want to count
+     *   }
+     * })
+    **/
+    count<T extends PosterTeamCountArgs>(
+      args?: Subset<T, PosterTeamCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PosterTeamCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PosterTeam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PosterTeamAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PosterTeamAggregateArgs>(args: Subset<T, PosterTeamAggregateArgs>): Prisma.PrismaPromise<GetPosterTeamAggregateType<T>>
+
+    /**
+     * Group by PosterTeam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PosterTeamGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PosterTeamGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PosterTeamGroupByArgs['orderBy'] }
+        : { orderBy?: PosterTeamGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PosterTeamGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPosterTeamGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PosterTeam model
+   */
+  readonly fields: PosterTeamFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PosterTeam.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PosterTeamClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    leader<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    members<T extends PosterTeam$membersArgs<ExtArgs> = {}>(args?: Subset<T, PosterTeam$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PosterTeam model
+   */
+  interface PosterTeamFieldRefs {
+    readonly id: FieldRef<"PosterTeam", 'String'>
+    readonly name: FieldRef<"PosterTeam", 'String'>
+    readonly createdAt: FieldRef<"PosterTeam", 'DateTime'>
+    readonly updatedAt: FieldRef<"PosterTeam", 'DateTime'>
+    readonly leaderId: FieldRef<"PosterTeam", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PosterTeam findUnique
+   */
+  export type PosterTeamFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * Filter, which PosterTeam to fetch.
+     */
+    where: PosterTeamWhereUniqueInput
+  }
+
+  /**
+   * PosterTeam findUniqueOrThrow
+   */
+  export type PosterTeamFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * Filter, which PosterTeam to fetch.
+     */
+    where: PosterTeamWhereUniqueInput
+  }
+
+  /**
+   * PosterTeam findFirst
+   */
+  export type PosterTeamFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * Filter, which PosterTeam to fetch.
+     */
+    where?: PosterTeamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PosterTeams to fetch.
+     */
+    orderBy?: PosterTeamOrderByWithRelationInput | PosterTeamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PosterTeams.
+     */
+    cursor?: PosterTeamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PosterTeams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PosterTeams.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PosterTeams.
+     */
+    distinct?: PosterTeamScalarFieldEnum | PosterTeamScalarFieldEnum[]
+  }
+
+  /**
+   * PosterTeam findFirstOrThrow
+   */
+  export type PosterTeamFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * Filter, which PosterTeam to fetch.
+     */
+    where?: PosterTeamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PosterTeams to fetch.
+     */
+    orderBy?: PosterTeamOrderByWithRelationInput | PosterTeamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PosterTeams.
+     */
+    cursor?: PosterTeamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PosterTeams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PosterTeams.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PosterTeams.
+     */
+    distinct?: PosterTeamScalarFieldEnum | PosterTeamScalarFieldEnum[]
+  }
+
+  /**
+   * PosterTeam findMany
+   */
+  export type PosterTeamFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * Filter, which PosterTeams to fetch.
+     */
+    where?: PosterTeamWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PosterTeams to fetch.
+     */
+    orderBy?: PosterTeamOrderByWithRelationInput | PosterTeamOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PosterTeams.
+     */
+    cursor?: PosterTeamWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PosterTeams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PosterTeams.
+     */
+    skip?: number
+    distinct?: PosterTeamScalarFieldEnum | PosterTeamScalarFieldEnum[]
+  }
+
+  /**
+   * PosterTeam create
+   */
+  export type PosterTeamCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PosterTeam.
+     */
+    data: XOR<PosterTeamCreateInput, PosterTeamUncheckedCreateInput>
+  }
+
+  /**
+   * PosterTeam createMany
+   */
+  export type PosterTeamCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PosterTeams.
+     */
+    data: PosterTeamCreateManyInput | PosterTeamCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PosterTeam createManyAndReturn
+   */
+  export type PosterTeamCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * The data used to create many PosterTeams.
+     */
+    data: PosterTeamCreateManyInput | PosterTeamCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PosterTeam update
+   */
+  export type PosterTeamUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PosterTeam.
+     */
+    data: XOR<PosterTeamUpdateInput, PosterTeamUncheckedUpdateInput>
+    /**
+     * Choose, which PosterTeam to update.
+     */
+    where: PosterTeamWhereUniqueInput
+  }
+
+  /**
+   * PosterTeam updateMany
+   */
+  export type PosterTeamUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PosterTeams.
+     */
+    data: XOR<PosterTeamUpdateManyMutationInput, PosterTeamUncheckedUpdateManyInput>
+    /**
+     * Filter which PosterTeams to update
+     */
+    where?: PosterTeamWhereInput
+    /**
+     * Limit how many PosterTeams to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PosterTeam updateManyAndReturn
+   */
+  export type PosterTeamUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * The data used to update PosterTeams.
+     */
+    data: XOR<PosterTeamUpdateManyMutationInput, PosterTeamUncheckedUpdateManyInput>
+    /**
+     * Filter which PosterTeams to update
+     */
+    where?: PosterTeamWhereInput
+    /**
+     * Limit how many PosterTeams to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PosterTeam upsert
+   */
+  export type PosterTeamUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PosterTeam to update in case it exists.
+     */
+    where: PosterTeamWhereUniqueInput
+    /**
+     * In case the PosterTeam found by the `where` argument doesn't exist, create a new PosterTeam with this data.
+     */
+    create: XOR<PosterTeamCreateInput, PosterTeamUncheckedCreateInput>
+    /**
+     * In case the PosterTeam was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PosterTeamUpdateInput, PosterTeamUncheckedUpdateInput>
+  }
+
+  /**
+   * PosterTeam delete
+   */
+  export type PosterTeamDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    /**
+     * Filter which PosterTeam to delete.
+     */
+    where: PosterTeamWhereUniqueInput
+  }
+
+  /**
+   * PosterTeam deleteMany
+   */
+  export type PosterTeamDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PosterTeams to delete
+     */
+    where?: PosterTeamWhereInput
+    /**
+     * Limit how many PosterTeams to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PosterTeam.members
+   */
+  export type PosterTeam$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * PosterTeam without action
+   */
+  export type PosterTeamDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -2713,6 +3932,7 @@ export namespace Prisma {
     isActive: boolean | null
     type: $Enums.UserType | null
     createdAt: Date | null
+    teamId: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -2724,6 +3944,7 @@ export namespace Prisma {
     isActive: boolean | null
     type: $Enums.UserType | null
     createdAt: Date | null
+    teamId: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2735,6 +3956,7 @@ export namespace Prisma {
     isActive: number
     type: number
     createdAt: number
+    teamId: number
     _all: number
   }
 
@@ -2756,6 +3978,7 @@ export namespace Prisma {
     isActive?: true
     type?: true
     createdAt?: true
+    teamId?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2767,6 +3990,7 @@ export namespace Prisma {
     isActive?: true
     type?: true
     createdAt?: true
+    teamId?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2778,6 +4002,7 @@ export namespace Prisma {
     isActive?: true
     type?: true
     createdAt?: true
+    teamId?: true
     _all?: true
   }
 
@@ -2876,6 +4101,7 @@ export namespace Prisma {
     isActive: boolean
     type: $Enums.UserType
     createdAt: Date
+    teamId: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2906,6 +4132,9 @@ export namespace Prisma {
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
+    teamId?: boolean
+    team?: boolean | User$teamArgs<ExtArgs>
+    leadingTeams?: boolean | User$leadingTeamsArgs<ExtArgs>
     posts?: boolean | User$postsArgs<ExtArgs>
     claims?: boolean | User$claimsArgs<ExtArgs>
     limitProfile?: boolean | User$limitProfileArgs<ExtArgs>
@@ -2925,6 +4154,8 @@ export namespace Prisma {
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
+    teamId?: boolean
+    team?: boolean | User$teamArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2936,6 +4167,8 @@ export namespace Prisma {
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
+    teamId?: boolean
+    team?: boolean | User$teamArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2947,10 +4180,13 @@ export namespace Prisma {
     isActive?: boolean
     type?: boolean
     createdAt?: boolean
+    teamId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userName" | "password" | "sessionVersion" | "isActive" | "type" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userName" | "password" | "sessionVersion" | "isActive" | "type" | "createdAt" | "teamId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    team?: boolean | User$teamArgs<ExtArgs>
+    leadingTeams?: boolean | User$leadingTeamsArgs<ExtArgs>
     posts?: boolean | User$postsArgs<ExtArgs>
     claims?: boolean | User$claimsArgs<ExtArgs>
     limitProfile?: boolean | User$limitProfileArgs<ExtArgs>
@@ -2960,12 +4196,18 @@ export namespace Prisma {
     notifications?: boolean | User$notificationsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    team?: boolean | User$teamArgs<ExtArgs>
+  }
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    team?: boolean | User$teamArgs<ExtArgs>
+  }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
+      team: Prisma.$PosterTeamPayload<ExtArgs> | null
+      leadingTeams: Prisma.$PosterTeamPayload<ExtArgs>[]
       posts: Prisma.$PostPayload<ExtArgs>[]
       claims: Prisma.$ClaimPayload<ExtArgs>[]
       limitProfile: Prisma.$SellerLimitPayload<ExtArgs> | null
@@ -2983,6 +4225,7 @@ export namespace Prisma {
       isActive: boolean
       type: $Enums.UserType
       createdAt: Date
+      teamId: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3377,6 +4620,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    team<T extends User$teamArgs<ExtArgs> = {}>(args?: Subset<T, User$teamArgs<ExtArgs>>): Prisma__PosterTeamClient<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    leadingTeams<T extends User$leadingTeamsArgs<ExtArgs> = {}>(args?: Subset<T, User$leadingTeamsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PosterTeamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     claims<T extends User$claimsArgs<ExtArgs> = {}>(args?: Subset<T, User$claimsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     limitProfile<T extends User$limitProfileArgs<ExtArgs> = {}>(args?: Subset<T, User$limitProfileArgs<ExtArgs>>): Prisma__SellerLimitClient<$Result.GetResult<Prisma.$SellerLimitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -3421,6 +4666,7 @@ export namespace Prisma {
     readonly isActive: FieldRef<"User", 'Boolean'>
     readonly type: FieldRef<"User", 'UserType'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly teamId: FieldRef<"User", 'String'>
   }
     
 
@@ -3670,6 +4916,10 @@ export namespace Prisma {
      */
     data: UserCreateManyInput | UserCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3740,6 +4990,10 @@ export namespace Prisma {
      * Limit how many Users to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3806,6 +5060,49 @@ export namespace Prisma {
      * Limit how many Users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * User.team
+   */
+  export type User$teamArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    where?: PosterTeamWhereInput
+  }
+
+  /**
+   * User.leadingTeams
+   */
+  export type User$leadingTeamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PosterTeam
+     */
+    select?: PosterTeamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PosterTeam
+     */
+    omit?: PosterTeamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PosterTeamInclude<ExtArgs> | null
+    where?: PosterTeamWhereInput
+    orderBy?: PosterTeamOrderByWithRelationInput | PosterTeamOrderByWithRelationInput[]
+    cursor?: PosterTeamWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PosterTeamScalarFieldEnum | PosterTeamScalarFieldEnum[]
   }
 
   /**
@@ -10604,6 +11901,17 @@ export namespace Prisma {
   export type SellerQueueScalarFieldEnum = (typeof SellerQueueScalarFieldEnum)[keyof typeof SellerQueueScalarFieldEnum]
 
 
+  export const PosterTeamScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    leaderId: 'leaderId'
+  };
+
+  export type PosterTeamScalarFieldEnum = (typeof PosterTeamScalarFieldEnum)[keyof typeof PosterTeamScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -10612,7 +11920,8 @@ export namespace Prisma {
     sessionVersion: 'sessionVersion',
     isActive: 'isActive',
     type: 'type',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    teamId: 'teamId'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -10906,6 +12215,64 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"SellerQueue"> | Date | string
   }
 
+  export type PosterTeamWhereInput = {
+    AND?: PosterTeamWhereInput | PosterTeamWhereInput[]
+    OR?: PosterTeamWhereInput[]
+    NOT?: PosterTeamWhereInput | PosterTeamWhereInput[]
+    id?: StringFilter<"PosterTeam"> | string
+    name?: StringFilter<"PosterTeam"> | string
+    createdAt?: DateTimeFilter<"PosterTeam"> | Date | string
+    updatedAt?: DateTimeFilter<"PosterTeam"> | Date | string
+    leaderId?: StringFilter<"PosterTeam"> | string
+    leader?: XOR<UserScalarRelationFilter, UserWhereInput>
+    members?: UserListRelationFilter
+  }
+
+  export type PosterTeamOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    leaderId?: SortOrder
+    leader?: UserOrderByWithRelationInput
+    members?: UserOrderByRelationAggregateInput
+  }
+
+  export type PosterTeamWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    leaderId?: string
+    AND?: PosterTeamWhereInput | PosterTeamWhereInput[]
+    OR?: PosterTeamWhereInput[]
+    NOT?: PosterTeamWhereInput | PosterTeamWhereInput[]
+    createdAt?: DateTimeFilter<"PosterTeam"> | Date | string
+    updatedAt?: DateTimeFilter<"PosterTeam"> | Date | string
+    leader?: XOR<UserScalarRelationFilter, UserWhereInput>
+    members?: UserListRelationFilter
+  }, "id" | "name" | "leaderId">
+
+  export type PosterTeamOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    leaderId?: SortOrder
+    _count?: PosterTeamCountOrderByAggregateInput
+    _max?: PosterTeamMaxOrderByAggregateInput
+    _min?: PosterTeamMinOrderByAggregateInput
+  }
+
+  export type PosterTeamScalarWhereWithAggregatesInput = {
+    AND?: PosterTeamScalarWhereWithAggregatesInput | PosterTeamScalarWhereWithAggregatesInput[]
+    OR?: PosterTeamScalarWhereWithAggregatesInput[]
+    NOT?: PosterTeamScalarWhereWithAggregatesInput | PosterTeamScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PosterTeam"> | string
+    name?: StringWithAggregatesFilter<"PosterTeam"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"PosterTeam"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PosterTeam"> | Date | string
+    leaderId?: StringWithAggregatesFilter<"PosterTeam"> | string
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -10918,6 +12285,9 @@ export namespace Prisma {
     isActive?: BoolFilter<"User"> | boolean
     type?: EnumUserTypeFilter<"User"> | $Enums.UserType
     createdAt?: DateTimeFilter<"User"> | Date | string
+    teamId?: StringNullableFilter<"User"> | string | null
+    team?: XOR<PosterTeamNullableScalarRelationFilter, PosterTeamWhereInput> | null
+    leadingTeams?: PosterTeamListRelationFilter
     posts?: PostListRelationFilter
     claims?: ClaimListRelationFilter
     limitProfile?: XOR<SellerLimitNullableScalarRelationFilter, SellerLimitWhereInput> | null
@@ -10936,6 +12306,9 @@ export namespace Prisma {
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
+    teamId?: SortOrderInput | SortOrder
+    team?: PosterTeamOrderByWithRelationInput
+    leadingTeams?: PosterTeamOrderByRelationAggregateInput
     posts?: PostOrderByRelationAggregateInput
     claims?: ClaimOrderByRelationAggregateInput
     limitProfile?: SellerLimitOrderByWithRelationInput
@@ -10957,6 +12330,9 @@ export namespace Prisma {
     isActive?: BoolFilter<"User"> | boolean
     type?: EnumUserTypeFilter<"User"> | $Enums.UserType
     createdAt?: DateTimeFilter<"User"> | Date | string
+    teamId?: StringNullableFilter<"User"> | string | null
+    team?: XOR<PosterTeamNullableScalarRelationFilter, PosterTeamWhereInput> | null
+    leadingTeams?: PosterTeamListRelationFilter
     posts?: PostListRelationFilter
     claims?: ClaimListRelationFilter
     limitProfile?: XOR<SellerLimitNullableScalarRelationFilter, SellerLimitWhereInput> | null
@@ -10975,6 +12351,7 @@ export namespace Prisma {
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
+    teamId?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -10994,6 +12371,7 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     type?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    teamId?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type PostWhereInput = {
@@ -11426,6 +12804,65 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PosterTeamCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leader: UserCreateNestedOneWithoutLeadingTeamsInput
+    members?: UserCreateNestedManyWithoutTeamInput
+  }
+
+  export type PosterTeamUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leaderId: string
+    members?: UserUncheckedCreateNestedManyWithoutTeamInput
+  }
+
+  export type PosterTeamUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leader?: UserUpdateOneRequiredWithoutLeadingTeamsNestedInput
+    members?: UserUpdateManyWithoutTeamNestedInput
+  }
+
+  export type PosterTeamUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaderId?: StringFieldUpdateOperationsInput | string
+    members?: UserUncheckedUpdateManyWithoutTeamNestedInput
+  }
+
+  export type PosterTeamCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leaderId: string
+  }
+
+  export type PosterTeamUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PosterTeamUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaderId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -11435,6 +12872,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     posts?: PostCreateNestedManyWithoutPosterInput
     claims?: ClaimCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
@@ -11453,6 +12892,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     posts?: PostUncheckedCreateNestedManyWithoutPosterInput
     claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
@@ -11471,6 +12912,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     posts?: PostUpdateManyWithoutPosterNestedInput
     claims?: ClaimUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
@@ -11489,6 +12932,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
@@ -11507,6 +12952,7 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -11529,6 +12975,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostCreateInput = {
@@ -12011,6 +13458,40 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type UserListRelationFilter = {
+    every?: UserWhereInput
+    some?: UserWhereInput
+    none?: UserWhereInput
+  }
+
+  export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PosterTeamCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    leaderId?: SortOrder
+  }
+
+  export type PosterTeamMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    leaderId?: SortOrder
+  }
+
+  export type PosterTeamMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    leaderId?: SortOrder
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -12032,6 +13513,32 @@ export namespace Prisma {
     in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type PosterTeamNullableScalarRelationFilter = {
+    is?: PosterTeamWhereInput | null
+    isNot?: PosterTeamWhereInput | null
+  }
+
+  export type PosterTeamListRelationFilter = {
+    every?: PosterTeamWhereInput
+    some?: PosterTeamWhereInput
+    none?: PosterTeamWhereInput
   }
 
   export type PostListRelationFilter = {
@@ -12075,6 +13582,15 @@ export namespace Prisma {
     none?: NotificationWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type PosterTeamOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type PostOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -12108,6 +13624,7 @@ export namespace Prisma {
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
+    teamId?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -12123,6 +13640,7 @@ export namespace Prisma {
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
+    teamId?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -12134,6 +13652,7 @@ export namespace Prisma {
     isActive?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
+    teamId?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -12172,6 +13691,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserTypeFilter<$PrismaModel>
     _max?: NestedEnumUserTypeFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type ClaimNullableScalarRelationFilter = {
@@ -12288,11 +13825,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type SellerLimitCountOrderByAggregateInput = {
     id?: SortOrder
     sellerId?: SortOrder
@@ -12384,21 +13916,6 @@ export namespace Prisma {
     _max?: NestedEnumRequestStatusFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type EnumNotificationTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
     in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
@@ -12462,24 +13979,6 @@ export namespace Prisma {
     read?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type EnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
     in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
@@ -12538,6 +14037,75 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSellerQueuesInput, UserUpdateWithoutSellerQueuesInput>, UserUncheckedUpdateWithoutSellerQueuesInput>
   }
 
+  export type UserCreateNestedOneWithoutLeadingTeamsInput = {
+    create?: XOR<UserCreateWithoutLeadingTeamsInput, UserUncheckedCreateWithoutLeadingTeamsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLeadingTeamsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedManyWithoutTeamInput = {
+    create?: XOR<UserCreateWithoutTeamInput, UserUncheckedCreateWithoutTeamInput> | UserCreateWithoutTeamInput[] | UserUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTeamInput | UserCreateOrConnectWithoutTeamInput[]
+    createMany?: UserCreateManyTeamInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutTeamInput = {
+    create?: XOR<UserCreateWithoutTeamInput, UserUncheckedCreateWithoutTeamInput> | UserCreateWithoutTeamInput[] | UserUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTeamInput | UserCreateOrConnectWithoutTeamInput[]
+    createMany?: UserCreateManyTeamInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutLeadingTeamsNestedInput = {
+    create?: XOR<UserCreateWithoutLeadingTeamsInput, UserUncheckedCreateWithoutLeadingTeamsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLeadingTeamsInput
+    upsert?: UserUpsertWithoutLeadingTeamsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLeadingTeamsInput, UserUpdateWithoutLeadingTeamsInput>, UserUncheckedUpdateWithoutLeadingTeamsInput>
+  }
+
+  export type UserUpdateManyWithoutTeamNestedInput = {
+    create?: XOR<UserCreateWithoutTeamInput, UserUncheckedCreateWithoutTeamInput> | UserCreateWithoutTeamInput[] | UserUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTeamInput | UserCreateOrConnectWithoutTeamInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutTeamInput | UserUpsertWithWhereUniqueWithoutTeamInput[]
+    createMany?: UserCreateManyTeamInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutTeamInput | UserUpdateWithWhereUniqueWithoutTeamInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutTeamInput | UserUpdateManyWithWhereWithoutTeamInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutTeamNestedInput = {
+    create?: XOR<UserCreateWithoutTeamInput, UserUncheckedCreateWithoutTeamInput> | UserCreateWithoutTeamInput[] | UserUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTeamInput | UserCreateOrConnectWithoutTeamInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutTeamInput | UserUpsertWithWhereUniqueWithoutTeamInput[]
+    createMany?: UserCreateManyTeamInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutTeamInput | UserUpdateWithWhereUniqueWithoutTeamInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutTeamInput | UserUpdateManyWithWhereWithoutTeamInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type PosterTeamCreateNestedOneWithoutMembersInput = {
+    create?: XOR<PosterTeamCreateWithoutMembersInput, PosterTeamUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: PosterTeamCreateOrConnectWithoutMembersInput
+    connect?: PosterTeamWhereUniqueInput
+  }
+
+  export type PosterTeamCreateNestedManyWithoutLeaderInput = {
+    create?: XOR<PosterTeamCreateWithoutLeaderInput, PosterTeamUncheckedCreateWithoutLeaderInput> | PosterTeamCreateWithoutLeaderInput[] | PosterTeamUncheckedCreateWithoutLeaderInput[]
+    connectOrCreate?: PosterTeamCreateOrConnectWithoutLeaderInput | PosterTeamCreateOrConnectWithoutLeaderInput[]
+    createMany?: PosterTeamCreateManyLeaderInputEnvelope
+    connect?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+  }
+
   export type PostCreateNestedManyWithoutPosterInput = {
     create?: XOR<PostCreateWithoutPosterInput, PostUncheckedCreateWithoutPosterInput> | PostCreateWithoutPosterInput[] | PostUncheckedCreateWithoutPosterInput[]
     connectOrCreate?: PostCreateOrConnectWithoutPosterInput | PostCreateOrConnectWithoutPosterInput[]
@@ -12584,6 +14152,13 @@ export namespace Prisma {
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
     createMany?: NotificationCreateManyUserInputEnvelope
     connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type PosterTeamUncheckedCreateNestedManyWithoutLeaderInput = {
+    create?: XOR<PosterTeamCreateWithoutLeaderInput, PosterTeamUncheckedCreateWithoutLeaderInput> | PosterTeamCreateWithoutLeaderInput[] | PosterTeamUncheckedCreateWithoutLeaderInput[]
+    connectOrCreate?: PosterTeamCreateOrConnectWithoutLeaderInput | PosterTeamCreateOrConnectWithoutLeaderInput[]
+    createMany?: PosterTeamCreateManyLeaderInputEnvelope
+    connect?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
   }
 
   export type PostUncheckedCreateNestedManyWithoutPosterInput = {
@@ -12648,6 +14223,30 @@ export namespace Prisma {
 
   export type EnumUserTypeFieldUpdateOperationsInput = {
     set?: $Enums.UserType
+  }
+
+  export type PosterTeamUpdateOneWithoutMembersNestedInput = {
+    create?: XOR<PosterTeamCreateWithoutMembersInput, PosterTeamUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: PosterTeamCreateOrConnectWithoutMembersInput
+    upsert?: PosterTeamUpsertWithoutMembersInput
+    disconnect?: PosterTeamWhereInput | boolean
+    delete?: PosterTeamWhereInput | boolean
+    connect?: PosterTeamWhereUniqueInput
+    update?: XOR<XOR<PosterTeamUpdateToOneWithWhereWithoutMembersInput, PosterTeamUpdateWithoutMembersInput>, PosterTeamUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type PosterTeamUpdateManyWithoutLeaderNestedInput = {
+    create?: XOR<PosterTeamCreateWithoutLeaderInput, PosterTeamUncheckedCreateWithoutLeaderInput> | PosterTeamCreateWithoutLeaderInput[] | PosterTeamUncheckedCreateWithoutLeaderInput[]
+    connectOrCreate?: PosterTeamCreateOrConnectWithoutLeaderInput | PosterTeamCreateOrConnectWithoutLeaderInput[]
+    upsert?: PosterTeamUpsertWithWhereUniqueWithoutLeaderInput | PosterTeamUpsertWithWhereUniqueWithoutLeaderInput[]
+    createMany?: PosterTeamCreateManyLeaderInputEnvelope
+    set?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    disconnect?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    delete?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    connect?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    update?: PosterTeamUpdateWithWhereUniqueWithoutLeaderInput | PosterTeamUpdateWithWhereUniqueWithoutLeaderInput[]
+    updateMany?: PosterTeamUpdateManyWithWhereWithoutLeaderInput | PosterTeamUpdateManyWithWhereWithoutLeaderInput[]
+    deleteMany?: PosterTeamScalarWhereInput | PosterTeamScalarWhereInput[]
   }
 
   export type PostUpdateManyWithoutPosterNestedInput = {
@@ -12742,6 +14341,24 @@ export namespace Prisma {
     update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput = {
+    create?: XOR<PosterTeamCreateWithoutLeaderInput, PosterTeamUncheckedCreateWithoutLeaderInput> | PosterTeamCreateWithoutLeaderInput[] | PosterTeamUncheckedCreateWithoutLeaderInput[]
+    connectOrCreate?: PosterTeamCreateOrConnectWithoutLeaderInput | PosterTeamCreateOrConnectWithoutLeaderInput[]
+    upsert?: PosterTeamUpsertWithWhereUniqueWithoutLeaderInput | PosterTeamUpsertWithWhereUniqueWithoutLeaderInput[]
+    createMany?: PosterTeamCreateManyLeaderInputEnvelope
+    set?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    disconnect?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    delete?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    connect?: PosterTeamWhereUniqueInput | PosterTeamWhereUniqueInput[]
+    update?: PosterTeamUpdateWithWhereUniqueWithoutLeaderInput | PosterTeamUpdateWithWhereUniqueWithoutLeaderInput[]
+    updateMany?: PosterTeamUpdateManyWithWhereWithoutLeaderInput | PosterTeamUpdateManyWithWhereWithoutLeaderInput[]
+    deleteMany?: PosterTeamScalarWhereInput | PosterTeamScalarWhereInput[]
   }
 
   export type PostUncheckedUpdateManyWithoutPosterNestedInput = {
@@ -13038,10 +14655,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsInput, UserUpdateWithoutNotificationsInput>, UserUncheckedUpdateWithoutNotificationsInput>
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -13121,6 +14734,20 @@ export namespace Prisma {
     not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -13166,6 +14793,34 @@ export namespace Prisma {
     _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -13191,17 +14846,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedEnumRequestStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.RequestStatus | EnumRequestStatusFieldRefInput<$PrismaModel>
     in?: $Enums.RequestStatus[] | ListEnumRequestStatusFieldRefInput<$PrismaModel>
@@ -13219,42 +14863,11 @@ export namespace Prisma {
     _max?: NestedEnumRequestStatusFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedEnumNotificationTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.NotificationType | EnumNotificationTypeFieldRefInput<$PrismaModel>
     in?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.NotificationType[] | ListEnumNotificationTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumNotificationTypeFilter<$PrismaModel> | $Enums.NotificationType
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumNotificationTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -13299,6 +14912,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     posts?: PostCreateNestedManyWithoutPosterInput
     claims?: ClaimCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
@@ -13316,6 +14931,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     posts?: PostUncheckedCreateNestedManyWithoutPosterInput
     claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
@@ -13349,6 +14966,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     posts?: PostUpdateManyWithoutPosterNestedInput
     claims?: ClaimUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
@@ -13366,12 +14985,232 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUncheckedUpdateManyWithoutSellerNestedInput
     postDeletions?: PostDeletionUncheckedUpdateManyWithoutSellerNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutLeadingTeamsInput = {
+    id?: string
+    name: string
+    userName: string
+    password: string
+    sessionVersion?: number
+    isActive?: boolean
+    type: $Enums.UserType
+    createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    posts?: PostCreateNestedManyWithoutPosterInput
+    claims?: ClaimCreateNestedManyWithoutSellerInput
+    limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
+    requestLogs?: SellerRequestLogCreateNestedManyWithoutSellerInput
+    sellerQueues?: SellerQueueCreateNestedManyWithoutSellerInput
+    postDeletions?: PostDeletionCreateNestedManyWithoutSellerInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutLeadingTeamsInput = {
+    id?: string
+    name: string
+    userName: string
+    password: string
+    sessionVersion?: number
+    isActive?: boolean
+    type: $Enums.UserType
+    createdAt?: Date | string
+    teamId?: string | null
+    posts?: PostUncheckedCreateNestedManyWithoutPosterInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
+    limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
+    requestLogs?: SellerRequestLogUncheckedCreateNestedManyWithoutSellerInput
+    sellerQueues?: SellerQueueUncheckedCreateNestedManyWithoutSellerInput
+    postDeletions?: PostDeletionUncheckedCreateNestedManyWithoutSellerInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLeadingTeamsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLeadingTeamsInput, UserUncheckedCreateWithoutLeadingTeamsInput>
+  }
+
+  export type UserCreateWithoutTeamInput = {
+    id?: string
+    name: string
+    userName: string
+    password: string
+    sessionVersion?: number
+    isActive?: boolean
+    type: $Enums.UserType
+    createdAt?: Date | string
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
+    posts?: PostCreateNestedManyWithoutPosterInput
+    claims?: ClaimCreateNestedManyWithoutSellerInput
+    limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
+    requestLogs?: SellerRequestLogCreateNestedManyWithoutSellerInput
+    sellerQueues?: SellerQueueCreateNestedManyWithoutSellerInput
+    postDeletions?: PostDeletionCreateNestedManyWithoutSellerInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutTeamInput = {
+    id?: string
+    name: string
+    userName: string
+    password: string
+    sessionVersion?: number
+    isActive?: boolean
+    type: $Enums.UserType
+    createdAt?: Date | string
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
+    posts?: PostUncheckedCreateNestedManyWithoutPosterInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
+    limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
+    requestLogs?: SellerRequestLogUncheckedCreateNestedManyWithoutSellerInput
+    sellerQueues?: SellerQueueUncheckedCreateNestedManyWithoutSellerInput
+    postDeletions?: PostDeletionUncheckedCreateNestedManyWithoutSellerInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutTeamInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTeamInput, UserUncheckedCreateWithoutTeamInput>
+  }
+
+  export type UserCreateManyTeamInputEnvelope = {
+    data: UserCreateManyTeamInput | UserCreateManyTeamInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutLeadingTeamsInput = {
+    update: XOR<UserUpdateWithoutLeadingTeamsInput, UserUncheckedUpdateWithoutLeadingTeamsInput>
+    create: XOR<UserCreateWithoutLeadingTeamsInput, UserUncheckedCreateWithoutLeadingTeamsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLeadingTeamsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLeadingTeamsInput, UserUncheckedUpdateWithoutLeadingTeamsInput>
+  }
+
+  export type UserUpdateWithoutLeadingTeamsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    posts?: PostUpdateManyWithoutPosterNestedInput
+    claims?: ClaimUpdateManyWithoutSellerNestedInput
+    limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
+    requestLogs?: SellerRequestLogUpdateManyWithoutSellerNestedInput
+    sellerQueues?: SellerQueueUpdateManyWithoutSellerNestedInput
+    postDeletions?: PostDeletionUpdateManyWithoutSellerNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLeadingTeamsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
+    limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
+    requestLogs?: SellerRequestLogUncheckedUpdateManyWithoutSellerNestedInput
+    sellerQueues?: SellerQueueUncheckedUpdateManyWithoutSellerNestedInput
+    postDeletions?: PostDeletionUncheckedUpdateManyWithoutSellerNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutTeamInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutTeamInput, UserUncheckedUpdateWithoutTeamInput>
+    create: XOR<UserCreateWithoutTeamInput, UserUncheckedCreateWithoutTeamInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutTeamInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutTeamInput, UserUncheckedUpdateWithoutTeamInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutTeamInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutTeamInput>
+  }
+
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
+    userName?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    sessionVersion?: IntFilter<"User"> | number
+    isActive?: BoolFilter<"User"> | boolean
+    type?: EnumUserTypeFilter<"User"> | $Enums.UserType
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    teamId?: StringNullableFilter<"User"> | string | null
+  }
+
+  export type PosterTeamCreateWithoutMembersInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leader: UserCreateNestedOneWithoutLeadingTeamsInput
+  }
+
+  export type PosterTeamUncheckedCreateWithoutMembersInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    leaderId: string
+  }
+
+  export type PosterTeamCreateOrConnectWithoutMembersInput = {
+    where: PosterTeamWhereUniqueInput
+    create: XOR<PosterTeamCreateWithoutMembersInput, PosterTeamUncheckedCreateWithoutMembersInput>
+  }
+
+  export type PosterTeamCreateWithoutLeaderInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    members?: UserCreateNestedManyWithoutTeamInput
+  }
+
+  export type PosterTeamUncheckedCreateWithoutLeaderInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    members?: UserUncheckedCreateNestedManyWithoutTeamInput
+  }
+
+  export type PosterTeamCreateOrConnectWithoutLeaderInput = {
+    where: PosterTeamWhereUniqueInput
+    create: XOR<PosterTeamCreateWithoutLeaderInput, PosterTeamUncheckedCreateWithoutLeaderInput>
+  }
+
+  export type PosterTeamCreateManyLeaderInputEnvelope = {
+    data: PosterTeamCreateManyLeaderInput | PosterTeamCreateManyLeaderInput[]
+    skipDuplicates?: boolean
   }
 
   export type PostCreateWithoutPosterInput = {
@@ -13553,6 +15392,60 @@ export namespace Prisma {
   export type NotificationCreateManyUserInputEnvelope = {
     data: NotificationCreateManyUserInput | NotificationCreateManyUserInput[]
     skipDuplicates?: boolean
+  }
+
+  export type PosterTeamUpsertWithoutMembersInput = {
+    update: XOR<PosterTeamUpdateWithoutMembersInput, PosterTeamUncheckedUpdateWithoutMembersInput>
+    create: XOR<PosterTeamCreateWithoutMembersInput, PosterTeamUncheckedCreateWithoutMembersInput>
+    where?: PosterTeamWhereInput
+  }
+
+  export type PosterTeamUpdateToOneWithWhereWithoutMembersInput = {
+    where?: PosterTeamWhereInput
+    data: XOR<PosterTeamUpdateWithoutMembersInput, PosterTeamUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type PosterTeamUpdateWithoutMembersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leader?: UserUpdateOneRequiredWithoutLeadingTeamsNestedInput
+  }
+
+  export type PosterTeamUncheckedUpdateWithoutMembersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaderId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PosterTeamUpsertWithWhereUniqueWithoutLeaderInput = {
+    where: PosterTeamWhereUniqueInput
+    update: XOR<PosterTeamUpdateWithoutLeaderInput, PosterTeamUncheckedUpdateWithoutLeaderInput>
+    create: XOR<PosterTeamCreateWithoutLeaderInput, PosterTeamUncheckedCreateWithoutLeaderInput>
+  }
+
+  export type PosterTeamUpdateWithWhereUniqueWithoutLeaderInput = {
+    where: PosterTeamWhereUniqueInput
+    data: XOR<PosterTeamUpdateWithoutLeaderInput, PosterTeamUncheckedUpdateWithoutLeaderInput>
+  }
+
+  export type PosterTeamUpdateManyWithWhereWithoutLeaderInput = {
+    where: PosterTeamScalarWhereInput
+    data: XOR<PosterTeamUpdateManyMutationInput, PosterTeamUncheckedUpdateManyWithoutLeaderInput>
+  }
+
+  export type PosterTeamScalarWhereInput = {
+    AND?: PosterTeamScalarWhereInput | PosterTeamScalarWhereInput[]
+    OR?: PosterTeamScalarWhereInput[]
+    NOT?: PosterTeamScalarWhereInput | PosterTeamScalarWhereInput[]
+    id?: StringFilter<"PosterTeam"> | string
+    name?: StringFilter<"PosterTeam"> | string
+    createdAt?: DateTimeFilter<"PosterTeam"> | Date | string
+    updatedAt?: DateTimeFilter<"PosterTeam"> | Date | string
+    leaderId?: StringFilter<"PosterTeam"> | string
   }
 
   export type PostUpsertWithWhereUniqueWithoutPosterInput = {
@@ -13759,6 +15652,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     claims?: ClaimCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
     requestLogs?: SellerRequestLogCreateNestedManyWithoutSellerInput
@@ -13776,6 +15671,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
     requestLogs?: SellerRequestLogUncheckedCreateNestedManyWithoutSellerInput
@@ -13850,6 +15747,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     claims?: ClaimUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUpdateManyWithoutSellerNestedInput
@@ -13867,6 +15766,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUncheckedUpdateManyWithoutSellerNestedInput
@@ -13962,6 +15863,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     posts?: PostCreateNestedManyWithoutPosterInput
     limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
     requestLogs?: SellerRequestLogCreateNestedManyWithoutSellerInput
@@ -13979,6 +15882,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     posts?: PostUncheckedCreateNestedManyWithoutPosterInput
     limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
     requestLogs?: SellerRequestLogUncheckedCreateNestedManyWithoutSellerInput
@@ -14057,6 +15962,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     posts?: PostUpdateManyWithoutPosterNestedInput
     limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUpdateManyWithoutSellerNestedInput
@@ -14074,6 +15981,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
     limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUncheckedUpdateManyWithoutSellerNestedInput
@@ -14091,6 +16000,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     posts?: PostCreateNestedManyWithoutPosterInput
     claims?: ClaimCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
@@ -14108,6 +16019,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     posts?: PostUncheckedCreateNestedManyWithoutPosterInput
     claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
@@ -14180,6 +16093,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     posts?: PostUpdateManyWithoutPosterNestedInput
     claims?: ClaimUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
@@ -14197,6 +16112,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
@@ -14259,6 +16176,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     posts?: PostCreateNestedManyWithoutPosterInput
     claims?: ClaimCreateNestedManyWithoutSellerInput
     requestLogs?: SellerRequestLogCreateNestedManyWithoutSellerInput
@@ -14276,6 +16195,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     posts?: PostUncheckedCreateNestedManyWithoutPosterInput
     claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
     requestLogs?: SellerRequestLogUncheckedCreateNestedManyWithoutSellerInput
@@ -14309,6 +16230,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     posts?: PostUpdateManyWithoutPosterNestedInput
     claims?: ClaimUpdateManyWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUpdateManyWithoutSellerNestedInput
@@ -14326,6 +16249,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUncheckedUpdateManyWithoutSellerNestedInput
@@ -14343,6 +16268,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     posts?: PostCreateNestedManyWithoutPosterInput
     claims?: ClaimCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
@@ -14360,6 +16287,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     posts?: PostUncheckedCreateNestedManyWithoutPosterInput
     claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
@@ -14393,6 +16322,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     posts?: PostUpdateManyWithoutPosterNestedInput
     claims?: ClaimUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
@@ -14410,6 +16341,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
@@ -14427,6 +16360,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    team?: PosterTeamCreateNestedOneWithoutMembersInput
+    leadingTeams?: PosterTeamCreateNestedManyWithoutLeaderInput
     posts?: PostCreateNestedManyWithoutPosterInput
     claims?: ClaimCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitCreateNestedOneWithoutSellerInput
@@ -14444,6 +16379,8 @@ export namespace Prisma {
     isActive?: boolean
     type: $Enums.UserType
     createdAt?: Date | string
+    teamId?: string | null
+    leadingTeams?: PosterTeamUncheckedCreateNestedManyWithoutLeaderInput
     posts?: PostUncheckedCreateNestedManyWithoutPosterInput
     claims?: ClaimUncheckedCreateNestedManyWithoutSellerInput
     limitProfile?: SellerLimitUncheckedCreateNestedOneWithoutSellerInput
@@ -14477,6 +16414,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    team?: PosterTeamUpdateOneWithoutMembersNestedInput
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
     posts?: PostUpdateManyWithoutPosterNestedInput
     claims?: ClaimUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
@@ -14494,12 +16433,81 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamId?: NullableStringFieldUpdateOperationsInput | string | null
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
     posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
     limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
     requestLogs?: SellerRequestLogUncheckedUpdateManyWithoutSellerNestedInput
     sellerQueues?: SellerQueueUncheckedUpdateManyWithoutSellerNestedInput
     postDeletions?: PostDeletionUncheckedUpdateManyWithoutSellerNestedInput
+  }
+
+  export type UserCreateManyTeamInput = {
+    id?: string
+    name: string
+    userName: string
+    password: string
+    sessionVersion?: number
+    isActive?: boolean
+    type: $Enums.UserType
+    createdAt?: Date | string
+  }
+
+  export type UserUpdateWithoutTeamInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leadingTeams?: PosterTeamUpdateManyWithoutLeaderNestedInput
+    posts?: PostUpdateManyWithoutPosterNestedInput
+    claims?: ClaimUpdateManyWithoutSellerNestedInput
+    limitProfile?: SellerLimitUpdateOneWithoutSellerNestedInput
+    requestLogs?: SellerRequestLogUpdateManyWithoutSellerNestedInput
+    sellerQueues?: SellerQueueUpdateManyWithoutSellerNestedInput
+    postDeletions?: PostDeletionUpdateManyWithoutSellerNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTeamInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    leadingTeams?: PosterTeamUncheckedUpdateManyWithoutLeaderNestedInput
+    posts?: PostUncheckedUpdateManyWithoutPosterNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutSellerNestedInput
+    limitProfile?: SellerLimitUncheckedUpdateOneWithoutSellerNestedInput
+    requestLogs?: SellerRequestLogUncheckedUpdateManyWithoutSellerNestedInput
+    sellerQueues?: SellerQueueUncheckedUpdateManyWithoutSellerNestedInput
+    postDeletions?: PostDeletionUncheckedUpdateManyWithoutSellerNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutTeamInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    sessionVersion?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    type?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PosterTeamCreateManyLeaderInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PostCreateManyPosterInput = {
@@ -14548,6 +16556,29 @@ export namespace Prisma {
     metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     read?: boolean
+  }
+
+  export type PosterTeamUpdateWithoutLeaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: UserUpdateManyWithoutTeamNestedInput
+  }
+
+  export type PosterTeamUncheckedUpdateWithoutLeaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: UserUncheckedUpdateManyWithoutTeamNestedInput
+  }
+
+  export type PosterTeamUncheckedUpdateManyWithoutLeaderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostUpdateWithoutPosterInput = {

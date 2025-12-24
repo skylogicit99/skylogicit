@@ -126,6 +126,14 @@ exports.Prisma.SellerQueueScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PosterTeamScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  leaderId: 'leaderId'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -134,7 +142,8 @@ exports.Prisma.UserScalarFieldEnum = {
   sessionVersion: 'sessionVersion',
   isActive: 'isActive',
   type: 'type',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  teamId: 'teamId'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
@@ -243,6 +252,7 @@ exports.NotificationType = exports.$Enums.NotificationType = {
 
 exports.Prisma.ModelName = {
   SellerQueue: 'SellerQueue',
+  PosterTeam: 'PosterTeam',
   User: 'User',
   Post: 'Post',
   Claim: 'Claim',

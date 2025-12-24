@@ -38,6 +38,20 @@ model SellerQueue {
   seller User @relation(fields: [sellerId], references: [id])
 }
 
+model PosterTeam {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // required leader
+  leaderId String @unique
+  leader   User   @relation("TeamLeader", fields: [leaderId], references: [id])
+
+  // posters in the team
+  members User[]
+}
+
 model User {
   id             String   @id @default(cuid())
   name           String
@@ -47,6 +61,13 @@ model User {
   isActive       Boolean  @default(true)
   type           UserType
   createdAt      DateTime @default(now())
+
+  // poster → team
+  teamId String?
+  team   PosterTeam? @relation(fields: [teamId], references: [id])
+
+  // leading teams (normally 1)
+  leadingTeams PosterTeam[] @relation("TeamLeader")
 
   posts        Post[]             @relation("PosterPosts")
   claims       Claim[]            @relation("SellerClaims")
