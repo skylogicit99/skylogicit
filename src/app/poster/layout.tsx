@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import { ClientSessionWatcher } from "@/components/ClientSessionWatcher";
+import TeamNavigation from "@/components/poster/TeamNavigation";
 
 export default async function PosterLayout({
   children,
@@ -29,6 +30,7 @@ export default async function PosterLayout({
           <Link href="/poster/leads/inbox">
             <Button className="cursor-pointer">Leads</Button>
           </Link>
+          <TeamNavigation />
           <Logout className="cursor-pointer" />
         </div>
       </header>
