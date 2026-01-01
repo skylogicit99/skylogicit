@@ -153,3 +153,11 @@ model Notification {
   @@index([userId, createdAt])
   @@index([createdAt])
 }
+
+model GlobalPostCounter {
+  id        String   @id @default(cuid())
+  count     Int      @default(0)
+  limit     Int      @default(15)
+  enabled   Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+}

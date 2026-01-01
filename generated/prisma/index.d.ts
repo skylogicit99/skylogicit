@@ -58,6 +58,11 @@ export type SellerRequestLog = $Result.DefaultSelection<Prisma.$SellerRequestLog
  * 
  */
 export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
+/**
+ * Model GlobalPostCounter
+ * 
+ */
+export type GlobalPostCounter = $Result.DefaultSelection<Prisma.$GlobalPostCounterPayload>
 
 /**
  * Enums
@@ -314,6 +319,16 @@ export class PrismaClient<
     * ```
     */
   get notification(): Prisma.NotificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.globalPostCounter`: Exposes CRUD operations for the **GlobalPostCounter** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GlobalPostCounters
+    * const globalPostCounters = await prisma.globalPostCounter.findMany()
+    * ```
+    */
+  get globalPostCounter(): Prisma.GlobalPostCounterDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -763,7 +778,8 @@ export namespace Prisma {
     PostDeletion: 'PostDeletion',
     SellerLimit: 'SellerLimit',
     SellerRequestLog: 'SellerRequestLog',
-    Notification: 'Notification'
+    Notification: 'Notification',
+    GlobalPostCounter: 'GlobalPostCounter'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -782,7 +798,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "sellerQueue" | "posterTeam" | "user" | "post" | "claim" | "postDeletion" | "sellerLimit" | "sellerRequestLog" | "notification"
+      modelProps: "sellerQueue" | "posterTeam" | "user" | "post" | "claim" | "postDeletion" | "sellerLimit" | "sellerRequestLog" | "notification" | "globalPostCounter"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1452,6 +1468,80 @@ export namespace Prisma {
           }
         }
       }
+      GlobalPostCounter: {
+        payload: Prisma.$GlobalPostCounterPayload<ExtArgs>
+        fields: Prisma.GlobalPostCounterFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GlobalPostCounterFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GlobalPostCounterFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>
+          }
+          findFirst: {
+            args: Prisma.GlobalPostCounterFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GlobalPostCounterFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>
+          }
+          findMany: {
+            args: Prisma.GlobalPostCounterFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>[]
+          }
+          create: {
+            args: Prisma.GlobalPostCounterCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>
+          }
+          createMany: {
+            args: Prisma.GlobalPostCounterCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GlobalPostCounterCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>[]
+          }
+          delete: {
+            args: Prisma.GlobalPostCounterDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>
+          }
+          update: {
+            args: Prisma.GlobalPostCounterUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>
+          }
+          deleteMany: {
+            args: Prisma.GlobalPostCounterDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GlobalPostCounterUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GlobalPostCounterUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>[]
+          }
+          upsert: {
+            args: Prisma.GlobalPostCounterUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalPostCounterPayload>
+          }
+          aggregate: {
+            args: Prisma.GlobalPostCounterAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGlobalPostCounter>
+          }
+          groupBy: {
+            args: Prisma.GlobalPostCounterGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GlobalPostCounterGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GlobalPostCounterCountArgs<ExtArgs>
+            result: $Utils.Optional<GlobalPostCounterCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1557,6 +1647,7 @@ export namespace Prisma {
     sellerLimit?: SellerLimitOmit
     sellerRequestLog?: SellerRequestLogOmit
     notification?: NotificationOmit
+    globalPostCounter?: GlobalPostCounterOmit
   }
 
   /* Types for Logging */
@@ -11879,6 +11970,1039 @@ export namespace Prisma {
 
 
   /**
+   * Model GlobalPostCounter
+   */
+
+  export type AggregateGlobalPostCounter = {
+    _count: GlobalPostCounterCountAggregateOutputType | null
+    _avg: GlobalPostCounterAvgAggregateOutputType | null
+    _sum: GlobalPostCounterSumAggregateOutputType | null
+    _min: GlobalPostCounterMinAggregateOutputType | null
+    _max: GlobalPostCounterMaxAggregateOutputType | null
+  }
+
+  export type GlobalPostCounterAvgAggregateOutputType = {
+    count: number | null
+    limit: number | null
+  }
+
+  export type GlobalPostCounterSumAggregateOutputType = {
+    count: number | null
+    limit: number | null
+  }
+
+  export type GlobalPostCounterMinAggregateOutputType = {
+    id: string | null
+    count: number | null
+    limit: number | null
+    enabled: boolean | null
+    updatedAt: Date | null
+  }
+
+  export type GlobalPostCounterMaxAggregateOutputType = {
+    id: string | null
+    count: number | null
+    limit: number | null
+    enabled: boolean | null
+    updatedAt: Date | null
+  }
+
+  export type GlobalPostCounterCountAggregateOutputType = {
+    id: number
+    count: number
+    limit: number
+    enabled: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type GlobalPostCounterAvgAggregateInputType = {
+    count?: true
+    limit?: true
+  }
+
+  export type GlobalPostCounterSumAggregateInputType = {
+    count?: true
+    limit?: true
+  }
+
+  export type GlobalPostCounterMinAggregateInputType = {
+    id?: true
+    count?: true
+    limit?: true
+    enabled?: true
+    updatedAt?: true
+  }
+
+  export type GlobalPostCounterMaxAggregateInputType = {
+    id?: true
+    count?: true
+    limit?: true
+    enabled?: true
+    updatedAt?: true
+  }
+
+  export type GlobalPostCounterCountAggregateInputType = {
+    id?: true
+    count?: true
+    limit?: true
+    enabled?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type GlobalPostCounterAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GlobalPostCounter to aggregate.
+     */
+    where?: GlobalPostCounterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GlobalPostCounters to fetch.
+     */
+    orderBy?: GlobalPostCounterOrderByWithRelationInput | GlobalPostCounterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GlobalPostCounterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GlobalPostCounters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GlobalPostCounters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GlobalPostCounters
+    **/
+    _count?: true | GlobalPostCounterCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GlobalPostCounterAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GlobalPostCounterSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GlobalPostCounterMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GlobalPostCounterMaxAggregateInputType
+  }
+
+  export type GetGlobalPostCounterAggregateType<T extends GlobalPostCounterAggregateArgs> = {
+        [P in keyof T & keyof AggregateGlobalPostCounter]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGlobalPostCounter[P]>
+      : GetScalarType<T[P], AggregateGlobalPostCounter[P]>
+  }
+
+
+
+
+  export type GlobalPostCounterGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GlobalPostCounterWhereInput
+    orderBy?: GlobalPostCounterOrderByWithAggregationInput | GlobalPostCounterOrderByWithAggregationInput[]
+    by: GlobalPostCounterScalarFieldEnum[] | GlobalPostCounterScalarFieldEnum
+    having?: GlobalPostCounterScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GlobalPostCounterCountAggregateInputType | true
+    _avg?: GlobalPostCounterAvgAggregateInputType
+    _sum?: GlobalPostCounterSumAggregateInputType
+    _min?: GlobalPostCounterMinAggregateInputType
+    _max?: GlobalPostCounterMaxAggregateInputType
+  }
+
+  export type GlobalPostCounterGroupByOutputType = {
+    id: string
+    count: number
+    limit: number
+    enabled: boolean
+    updatedAt: Date
+    _count: GlobalPostCounterCountAggregateOutputType | null
+    _avg: GlobalPostCounterAvgAggregateOutputType | null
+    _sum: GlobalPostCounterSumAggregateOutputType | null
+    _min: GlobalPostCounterMinAggregateOutputType | null
+    _max: GlobalPostCounterMaxAggregateOutputType | null
+  }
+
+  type GetGlobalPostCounterGroupByPayload<T extends GlobalPostCounterGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GlobalPostCounterGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GlobalPostCounterGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GlobalPostCounterGroupByOutputType[P]>
+            : GetScalarType<T[P], GlobalPostCounterGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GlobalPostCounterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    count?: boolean
+    limit?: boolean
+    enabled?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["globalPostCounter"]>
+
+  export type GlobalPostCounterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    count?: boolean
+    limit?: boolean
+    enabled?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["globalPostCounter"]>
+
+  export type GlobalPostCounterSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    count?: boolean
+    limit?: boolean
+    enabled?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["globalPostCounter"]>
+
+  export type GlobalPostCounterSelectScalar = {
+    id?: boolean
+    count?: boolean
+    limit?: boolean
+    enabled?: boolean
+    updatedAt?: boolean
+  }
+
+  export type GlobalPostCounterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "count" | "limit" | "enabled" | "updatedAt", ExtArgs["result"]["globalPostCounter"]>
+
+  export type $GlobalPostCounterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GlobalPostCounter"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      count: number
+      limit: number
+      enabled: boolean
+      updatedAt: Date
+    }, ExtArgs["result"]["globalPostCounter"]>
+    composites: {}
+  }
+
+  type GlobalPostCounterGetPayload<S extends boolean | null | undefined | GlobalPostCounterDefaultArgs> = $Result.GetResult<Prisma.$GlobalPostCounterPayload, S>
+
+  type GlobalPostCounterCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GlobalPostCounterFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GlobalPostCounterCountAggregateInputType | true
+    }
+
+  export interface GlobalPostCounterDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GlobalPostCounter'], meta: { name: 'GlobalPostCounter' } }
+    /**
+     * Find zero or one GlobalPostCounter that matches the filter.
+     * @param {GlobalPostCounterFindUniqueArgs} args - Arguments to find a GlobalPostCounter
+     * @example
+     * // Get one GlobalPostCounter
+     * const globalPostCounter = await prisma.globalPostCounter.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GlobalPostCounterFindUniqueArgs>(args: SelectSubset<T, GlobalPostCounterFindUniqueArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GlobalPostCounter that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GlobalPostCounterFindUniqueOrThrowArgs} args - Arguments to find a GlobalPostCounter
+     * @example
+     * // Get one GlobalPostCounter
+     * const globalPostCounter = await prisma.globalPostCounter.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GlobalPostCounterFindUniqueOrThrowArgs>(args: SelectSubset<T, GlobalPostCounterFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GlobalPostCounter that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GlobalPostCounterFindFirstArgs} args - Arguments to find a GlobalPostCounter
+     * @example
+     * // Get one GlobalPostCounter
+     * const globalPostCounter = await prisma.globalPostCounter.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GlobalPostCounterFindFirstArgs>(args?: SelectSubset<T, GlobalPostCounterFindFirstArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GlobalPostCounter that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GlobalPostCounterFindFirstOrThrowArgs} args - Arguments to find a GlobalPostCounter
+     * @example
+     * // Get one GlobalPostCounter
+     * const globalPostCounter = await prisma.globalPostCounter.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GlobalPostCounterFindFirstOrThrowArgs>(args?: SelectSubset<T, GlobalPostCounterFindFirstOrThrowArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GlobalPostCounters that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GlobalPostCounterFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GlobalPostCounters
+     * const globalPostCounters = await prisma.globalPostCounter.findMany()
+     * 
+     * // Get first 10 GlobalPostCounters
+     * const globalPostCounters = await prisma.globalPostCounter.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const globalPostCounterWithIdOnly = await prisma.globalPostCounter.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GlobalPostCounterFindManyArgs>(args?: SelectSubset<T, GlobalPostCounterFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GlobalPostCounter.
+     * @param {GlobalPostCounterCreateArgs} args - Arguments to create a GlobalPostCounter.
+     * @example
+     * // Create one GlobalPostCounter
+     * const GlobalPostCounter = await prisma.globalPostCounter.create({
+     *   data: {
+     *     // ... data to create a GlobalPostCounter
+     *   }
+     * })
+     * 
+     */
+    create<T extends GlobalPostCounterCreateArgs>(args: SelectSubset<T, GlobalPostCounterCreateArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GlobalPostCounters.
+     * @param {GlobalPostCounterCreateManyArgs} args - Arguments to create many GlobalPostCounters.
+     * @example
+     * // Create many GlobalPostCounters
+     * const globalPostCounter = await prisma.globalPostCounter.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GlobalPostCounterCreateManyArgs>(args?: SelectSubset<T, GlobalPostCounterCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GlobalPostCounters and returns the data saved in the database.
+     * @param {GlobalPostCounterCreateManyAndReturnArgs} args - Arguments to create many GlobalPostCounters.
+     * @example
+     * // Create many GlobalPostCounters
+     * const globalPostCounter = await prisma.globalPostCounter.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GlobalPostCounters and only return the `id`
+     * const globalPostCounterWithIdOnly = await prisma.globalPostCounter.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GlobalPostCounterCreateManyAndReturnArgs>(args?: SelectSubset<T, GlobalPostCounterCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GlobalPostCounter.
+     * @param {GlobalPostCounterDeleteArgs} args - Arguments to delete one GlobalPostCounter.
+     * @example
+     * // Delete one GlobalPostCounter
+     * const GlobalPostCounter = await prisma.globalPostCounter.delete({
+     *   where: {
+     *     // ... filter to delete one GlobalPostCounter
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GlobalPostCounterDeleteArgs>(args: SelectSubset<T, GlobalPostCounterDeleteArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GlobalPostCounter.
+     * @param {GlobalPostCounterUpdateArgs} args - Arguments to update one GlobalPostCounter.
+     * @example
+     * // Update one GlobalPostCounter
+     * const globalPostCounter = await prisma.globalPostCounter.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GlobalPostCounterUpdateArgs>(args: SelectSubset<T, GlobalPostCounterUpdateArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GlobalPostCounters.
+     * @param {GlobalPostCounterDeleteManyArgs} args - Arguments to filter GlobalPostCounters to delete.
+     * @example
+     * // Delete a few GlobalPostCounters
+     * const { count } = await prisma.globalPostCounter.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GlobalPostCounterDeleteManyArgs>(args?: SelectSubset<T, GlobalPostCounterDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GlobalPostCounters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GlobalPostCounterUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GlobalPostCounters
+     * const globalPostCounter = await prisma.globalPostCounter.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GlobalPostCounterUpdateManyArgs>(args: SelectSubset<T, GlobalPostCounterUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GlobalPostCounters and returns the data updated in the database.
+     * @param {GlobalPostCounterUpdateManyAndReturnArgs} args - Arguments to update many GlobalPostCounters.
+     * @example
+     * // Update many GlobalPostCounters
+     * const globalPostCounter = await prisma.globalPostCounter.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GlobalPostCounters and only return the `id`
+     * const globalPostCounterWithIdOnly = await prisma.globalPostCounter.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GlobalPostCounterUpdateManyAndReturnArgs>(args: SelectSubset<T, GlobalPostCounterUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GlobalPostCounter.
+     * @param {GlobalPostCounterUpsertArgs} args - Arguments to update or create a GlobalPostCounter.
+     * @example
+     * // Update or create a GlobalPostCounter
+     * const globalPostCounter = await prisma.globalPostCounter.upsert({
+     *   create: {
+     *     // ... data to create a GlobalPostCounter
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GlobalPostCounter we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GlobalPostCounterUpsertArgs>(args: SelectSubset<T, GlobalPostCounterUpsertArgs<ExtArgs>>): Prisma__GlobalPostCounterClient<$Result.GetResult<Prisma.$GlobalPostCounterPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GlobalPostCounters.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GlobalPostCounterCountArgs} args - Arguments to filter GlobalPostCounters to count.
+     * @example
+     * // Count the number of GlobalPostCounters
+     * const count = await prisma.globalPostCounter.count({
+     *   where: {
+     *     // ... the filter for the GlobalPostCounters we want to count
+     *   }
+     * })
+    **/
+    count<T extends GlobalPostCounterCountArgs>(
+      args?: Subset<T, GlobalPostCounterCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GlobalPostCounterCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GlobalPostCounter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GlobalPostCounterAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GlobalPostCounterAggregateArgs>(args: Subset<T, GlobalPostCounterAggregateArgs>): Prisma.PrismaPromise<GetGlobalPostCounterAggregateType<T>>
+
+    /**
+     * Group by GlobalPostCounter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GlobalPostCounterGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GlobalPostCounterGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GlobalPostCounterGroupByArgs['orderBy'] }
+        : { orderBy?: GlobalPostCounterGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GlobalPostCounterGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGlobalPostCounterGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GlobalPostCounter model
+   */
+  readonly fields: GlobalPostCounterFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GlobalPostCounter.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GlobalPostCounterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GlobalPostCounter model
+   */
+  interface GlobalPostCounterFieldRefs {
+    readonly id: FieldRef<"GlobalPostCounter", 'String'>
+    readonly count: FieldRef<"GlobalPostCounter", 'Int'>
+    readonly limit: FieldRef<"GlobalPostCounter", 'Int'>
+    readonly enabled: FieldRef<"GlobalPostCounter", 'Boolean'>
+    readonly updatedAt: FieldRef<"GlobalPostCounter", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GlobalPostCounter findUnique
+   */
+  export type GlobalPostCounterFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * Filter, which GlobalPostCounter to fetch.
+     */
+    where: GlobalPostCounterWhereUniqueInput
+  }
+
+  /**
+   * GlobalPostCounter findUniqueOrThrow
+   */
+  export type GlobalPostCounterFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * Filter, which GlobalPostCounter to fetch.
+     */
+    where: GlobalPostCounterWhereUniqueInput
+  }
+
+  /**
+   * GlobalPostCounter findFirst
+   */
+  export type GlobalPostCounterFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * Filter, which GlobalPostCounter to fetch.
+     */
+    where?: GlobalPostCounterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GlobalPostCounters to fetch.
+     */
+    orderBy?: GlobalPostCounterOrderByWithRelationInput | GlobalPostCounterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GlobalPostCounters.
+     */
+    cursor?: GlobalPostCounterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GlobalPostCounters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GlobalPostCounters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GlobalPostCounters.
+     */
+    distinct?: GlobalPostCounterScalarFieldEnum | GlobalPostCounterScalarFieldEnum[]
+  }
+
+  /**
+   * GlobalPostCounter findFirstOrThrow
+   */
+  export type GlobalPostCounterFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * Filter, which GlobalPostCounter to fetch.
+     */
+    where?: GlobalPostCounterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GlobalPostCounters to fetch.
+     */
+    orderBy?: GlobalPostCounterOrderByWithRelationInput | GlobalPostCounterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GlobalPostCounters.
+     */
+    cursor?: GlobalPostCounterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GlobalPostCounters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GlobalPostCounters.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GlobalPostCounters.
+     */
+    distinct?: GlobalPostCounterScalarFieldEnum | GlobalPostCounterScalarFieldEnum[]
+  }
+
+  /**
+   * GlobalPostCounter findMany
+   */
+  export type GlobalPostCounterFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * Filter, which GlobalPostCounters to fetch.
+     */
+    where?: GlobalPostCounterWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GlobalPostCounters to fetch.
+     */
+    orderBy?: GlobalPostCounterOrderByWithRelationInput | GlobalPostCounterOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GlobalPostCounters.
+     */
+    cursor?: GlobalPostCounterWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GlobalPostCounters from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GlobalPostCounters.
+     */
+    skip?: number
+    distinct?: GlobalPostCounterScalarFieldEnum | GlobalPostCounterScalarFieldEnum[]
+  }
+
+  /**
+   * GlobalPostCounter create
+   */
+  export type GlobalPostCounterCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * The data needed to create a GlobalPostCounter.
+     */
+    data: XOR<GlobalPostCounterCreateInput, GlobalPostCounterUncheckedCreateInput>
+  }
+
+  /**
+   * GlobalPostCounter createMany
+   */
+  export type GlobalPostCounterCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GlobalPostCounters.
+     */
+    data: GlobalPostCounterCreateManyInput | GlobalPostCounterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GlobalPostCounter createManyAndReturn
+   */
+  export type GlobalPostCounterCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * The data used to create many GlobalPostCounters.
+     */
+    data: GlobalPostCounterCreateManyInput | GlobalPostCounterCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GlobalPostCounter update
+   */
+  export type GlobalPostCounterUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * The data needed to update a GlobalPostCounter.
+     */
+    data: XOR<GlobalPostCounterUpdateInput, GlobalPostCounterUncheckedUpdateInput>
+    /**
+     * Choose, which GlobalPostCounter to update.
+     */
+    where: GlobalPostCounterWhereUniqueInput
+  }
+
+  /**
+   * GlobalPostCounter updateMany
+   */
+  export type GlobalPostCounterUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GlobalPostCounters.
+     */
+    data: XOR<GlobalPostCounterUpdateManyMutationInput, GlobalPostCounterUncheckedUpdateManyInput>
+    /**
+     * Filter which GlobalPostCounters to update
+     */
+    where?: GlobalPostCounterWhereInput
+    /**
+     * Limit how many GlobalPostCounters to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GlobalPostCounter updateManyAndReturn
+   */
+  export type GlobalPostCounterUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * The data used to update GlobalPostCounters.
+     */
+    data: XOR<GlobalPostCounterUpdateManyMutationInput, GlobalPostCounterUncheckedUpdateManyInput>
+    /**
+     * Filter which GlobalPostCounters to update
+     */
+    where?: GlobalPostCounterWhereInput
+    /**
+     * Limit how many GlobalPostCounters to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GlobalPostCounter upsert
+   */
+  export type GlobalPostCounterUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * The filter to search for the GlobalPostCounter to update in case it exists.
+     */
+    where: GlobalPostCounterWhereUniqueInput
+    /**
+     * In case the GlobalPostCounter found by the `where` argument doesn't exist, create a new GlobalPostCounter with this data.
+     */
+    create: XOR<GlobalPostCounterCreateInput, GlobalPostCounterUncheckedCreateInput>
+    /**
+     * In case the GlobalPostCounter was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GlobalPostCounterUpdateInput, GlobalPostCounterUncheckedUpdateInput>
+  }
+
+  /**
+   * GlobalPostCounter delete
+   */
+  export type GlobalPostCounterDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+    /**
+     * Filter which GlobalPostCounter to delete.
+     */
+    where: GlobalPostCounterWhereUniqueInput
+  }
+
+  /**
+   * GlobalPostCounter deleteMany
+   */
+  export type GlobalPostCounterDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GlobalPostCounters to delete
+     */
+    where?: GlobalPostCounterWhereInput
+    /**
+     * Limit how many GlobalPostCounters to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GlobalPostCounter without action
+   */
+  export type GlobalPostCounterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalPostCounter
+     */
+    select?: GlobalPostCounterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalPostCounter
+     */
+    omit?: GlobalPostCounterOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12000,6 +13124,17 @@ export namespace Prisma {
   };
 
   export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
+
+
+  export const GlobalPostCounterScalarFieldEnum: {
+    id: 'id',
+    count: 'count',
+    limit: 'limit',
+    enabled: 'enabled',
+    updatedAt: 'updatedAt'
+  };
+
+  export type GlobalPostCounterScalarFieldEnum = (typeof GlobalPostCounterScalarFieldEnum)[keyof typeof GlobalPostCounterScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12763,6 +13898,60 @@ export namespace Prisma {
     read?: BoolWithAggregatesFilter<"Notification"> | boolean
   }
 
+  export type GlobalPostCounterWhereInput = {
+    AND?: GlobalPostCounterWhereInput | GlobalPostCounterWhereInput[]
+    OR?: GlobalPostCounterWhereInput[]
+    NOT?: GlobalPostCounterWhereInput | GlobalPostCounterWhereInput[]
+    id?: StringFilter<"GlobalPostCounter"> | string
+    count?: IntFilter<"GlobalPostCounter"> | number
+    limit?: IntFilter<"GlobalPostCounter"> | number
+    enabled?: BoolFilter<"GlobalPostCounter"> | boolean
+    updatedAt?: DateTimeFilter<"GlobalPostCounter"> | Date | string
+  }
+
+  export type GlobalPostCounterOrderByWithRelationInput = {
+    id?: SortOrder
+    count?: SortOrder
+    limit?: SortOrder
+    enabled?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GlobalPostCounterWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GlobalPostCounterWhereInput | GlobalPostCounterWhereInput[]
+    OR?: GlobalPostCounterWhereInput[]
+    NOT?: GlobalPostCounterWhereInput | GlobalPostCounterWhereInput[]
+    count?: IntFilter<"GlobalPostCounter"> | number
+    limit?: IntFilter<"GlobalPostCounter"> | number
+    enabled?: BoolFilter<"GlobalPostCounter"> | boolean
+    updatedAt?: DateTimeFilter<"GlobalPostCounter"> | Date | string
+  }, "id">
+
+  export type GlobalPostCounterOrderByWithAggregationInput = {
+    id?: SortOrder
+    count?: SortOrder
+    limit?: SortOrder
+    enabled?: SortOrder
+    updatedAt?: SortOrder
+    _count?: GlobalPostCounterCountOrderByAggregateInput
+    _avg?: GlobalPostCounterAvgOrderByAggregateInput
+    _max?: GlobalPostCounterMaxOrderByAggregateInput
+    _min?: GlobalPostCounterMinOrderByAggregateInput
+    _sum?: GlobalPostCounterSumOrderByAggregateInput
+  }
+
+  export type GlobalPostCounterScalarWhereWithAggregatesInput = {
+    AND?: GlobalPostCounterScalarWhereWithAggregatesInput | GlobalPostCounterScalarWhereWithAggregatesInput[]
+    OR?: GlobalPostCounterScalarWhereWithAggregatesInput[]
+    NOT?: GlobalPostCounterScalarWhereWithAggregatesInput | GlobalPostCounterScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GlobalPostCounter"> | string
+    count?: IntWithAggregatesFilter<"GlobalPostCounter"> | number
+    limit?: IntWithAggregatesFilter<"GlobalPostCounter"> | number
+    enabled?: BoolWithAggregatesFilter<"GlobalPostCounter"> | boolean
+    updatedAt?: DateTimeWithAggregatesFilter<"GlobalPostCounter"> | Date | string
+  }
+
   export type SellerQueueCreateInput = {
     id?: string
     createdAt?: Date | string
@@ -13375,6 +14564,62 @@ export namespace Prisma {
     metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type GlobalPostCounterCreateInput = {
+    id?: string
+    count?: number
+    limit?: number
+    enabled?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type GlobalPostCounterUncheckedCreateInput = {
+    id?: string
+    count?: number
+    limit?: number
+    enabled?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type GlobalPostCounterUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GlobalPostCounterUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GlobalPostCounterCreateManyInput = {
+    id?: string
+    count?: number
+    limit?: number
+    enabled?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type GlobalPostCounterUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GlobalPostCounterUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    count?: IntFieldUpdateOperationsInput | number
+    limit?: IntFieldUpdateOperationsInput | number
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -14013,6 +15258,40 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedJsonNullableFilter<$PrismaModel>
     _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type GlobalPostCounterCountOrderByAggregateInput = {
+    id?: SortOrder
+    count?: SortOrder
+    limit?: SortOrder
+    enabled?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GlobalPostCounterAvgOrderByAggregateInput = {
+    count?: SortOrder
+    limit?: SortOrder
+  }
+
+  export type GlobalPostCounterMaxOrderByAggregateInput = {
+    id?: SortOrder
+    count?: SortOrder
+    limit?: SortOrder
+    enabled?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GlobalPostCounterMinOrderByAggregateInput = {
+    id?: SortOrder
+    count?: SortOrder
+    limit?: SortOrder
+    enabled?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GlobalPostCounterSumOrderByAggregateInput = {
+    count?: SortOrder
+    limit?: SortOrder
   }
 
   export type UserCreateNestedOneWithoutSellerQueuesInput = {

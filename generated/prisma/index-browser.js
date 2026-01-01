@@ -203,6 +203,14 @@ exports.Prisma.NotificationScalarFieldEnum = {
   read: 'read'
 };
 
+exports.Prisma.GlobalPostCounterScalarFieldEnum = {
+  id: 'id',
+  count: 'count',
+  limit: 'limit',
+  enabled: 'enabled',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -259,7 +267,8 @@ exports.Prisma.ModelName = {
   PostDeletion: 'PostDeletion',
   SellerLimit: 'SellerLimit',
   SellerRequestLog: 'SellerRequestLog',
-  Notification: 'Notification'
+  Notification: 'Notification',
+  GlobalPostCounter: 'GlobalPostCounter'
 };
 
 /**

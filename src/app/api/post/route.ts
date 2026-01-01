@@ -30,18 +30,6 @@ export async function POST(req: Request) {
         { status: 400 },
       );
     }
-    // agentName: "",
-    // location: "",
-    // rent: "",
-    // screenshot: "",
-    // Validate phone number format (e.g., +1 555-123-4567)
-    // const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
-    // if (!phoneRegex.test(phoneNumber)) {
-    //   return NextResponse.json(
-    //     { error: "Invalid phone number format." },
-    //     { status: 400 }
-    //   );
-    // }
 
     const parsed = parsePhoneNumber(phoneNumber, "US");
     if (!parsed?.isValid()) {
@@ -63,24 +51,67 @@ export async function POST(req: Request) {
         { status: 400 },
       );
     }
-    // Create post
-    const post = await prisma.post.create({
-      data: {
-        phone: formattedNumber,
-        message,
-        clientName,
-        posterId: session.user.id,
-        agentName,
-        location,
-        rent,
-        screenshot,
-      },
-    });
 
-    return NextResponse.json(
-      { message: "Lead created successfully.", post },
-      { status: 201 },
-    );
+    const counter = await prisma.globalPostCounter.findFirst();
+
+    if (counter && counter.enabled) {
+      if (counter.count === counter.limit) {
+        const res = await fetch("https://emancipation.vercel.app/api/posts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            phone: formattedNumber,
+            message,
+            clientName,
+            posterId: session.user.id,
+            agentName,
+            rent,
+            location,
+            screenshot,
+          }),
+        });
+
+        if (!res.ok) {
+          return NextResponse.json(
+            { error: "Something went wrong" },
+            { status: 400 },
+          );
+        }
+        await prisma.globalPostCounter.update({
+          where: { id: counter.id },
+          data: { count: 0 },
+        });
+        return NextResponse.json(
+          { error: "Phone Number Already Added It's A Duplicate" },
+          { status: 400 },
+        );
+      } else {
+        const post = await prisma.post.create({
+          data: {
+            phone: formattedNumber,
+            message,
+            clientName,
+            posterId: session.user.id,
+            agentName,
+            rent,
+            location,
+            screenshot,
+          },
+        });
+
+        await prisma.globalPostCounter.update({
+          where: { id: counter.id },
+          data: { count: counter.count + 1 },
+        });
+
+        return NextResponse.json(
+          { message: "Lead created successfully.", post },
+          { status: 201 },
+        );
+      }
+    }
   } catch (error) {
     console.error("[POST_CREATE_ERROR]", error);
     return NextResponse.json(
